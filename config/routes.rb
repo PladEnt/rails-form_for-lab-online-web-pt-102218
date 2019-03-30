@@ -3,4 +3,4 @@ Rails.application.routes.draw do
   resources :students, except: [:destroy, :index]
   resources :school_classes, except: [:destroy, :index]
 end
-school_classes
+school_classes_controller
