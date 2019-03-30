@@ -1,31 +1,31 @@
-class StudentsController < ActionController::Base
+class StudentsController < ApplicationController
   def show
-		@post = Post.find(params[:id])
-	end
-
-	def new
-		@post = Post.new
-	end
-
-	def create
-    @post = Post.new(post_params(:title, :description))
-    @post.save
-    redirect_to post_path(@post)
+    @student = Student.find(params[:id])
   end
-   
-  def update
-    @post = Post.find(params[:id])
-    @post.update(post_params(:title))
-    redirect_to post_path(@post)
+
+  def new
+    @student = Student.new
   end
-  
+
   def edit
-	  @post = Post.find(params[:id])
-	end
-   
+    @student = Student.find(params[:id])
+  end
+
+  def create
+    @student = Student.new(student_params)
+    @student.save
+    redirect_to student_path(@student)
+  end
+
+  def update
+    @student = Student.find(params[:id])
+    @student.update(student_params)
+    redirect_to student_path(@student)
+  end
+
   private
-   
-  def post_params(*args)
-    params.require(:post).permit(*args)
+
+  def student_params
+    params.require(:student).permit!
   end
 end
